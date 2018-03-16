@@ -76,12 +76,11 @@ object Validate {
     val g = showExpr
     new Validate[T, P] {
       override type R = P
-      override def validate(t: T): Res = {
+      override def validate(t: T): Res =
         if (t == null)
           Result.fromBoolean(false, p)
         else
           Result.fromBoolean(f(t), p)
-      }
       override def showExpr(t: T): String = g(t)
     }
   }
